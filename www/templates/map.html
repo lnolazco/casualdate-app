@@ -1,0 +1,34 @@
+<ion-view view-title="Map">
+  <ion-content>
+    <ui-gmap-google-map center='map.center' zoom='map.zoom'
+    control='map.control'
+    bounds='map.bounds'
+    options='map.options'
+    events='map.events'
+    pan="false">
+    <ui-gmap-markers models="markers.models"
+                    coords="'self'"
+                    control="markers.control"
+                    icon="'icon'"
+                    click="openContact">
+    </ui-gmap-marker>
+      <ui-gmap-window show="contact.show" coords="contact.position" closeClick="closeClick()" control="contact.control">
+        <div class="popup" style="width: 150px; height: 160px;">
+          <form class="form-horizontal">
+            <div class="form-group">
+              <label class="col-md-6 control-label">Alias</label>
+              <div class="col-md-6">
+                <p class="form-control-static">{{contact.model.alias}}</p>
+              </div>
+            </div>
+            <!--
+            <div ng-controller='chatCtrl'>
+              <button ng-click="openChat()" class="btn btn-info">Contact</button>
+            </div>
+          -->
+          </form>
+        </div>
+      </ui-gmap-window>
+  </ui-gmap-google-map>
+</ion-content>
+</ion-view>
