@@ -11,11 +11,15 @@
         </div>
       </div>
       <form class="row row-chat">
-        <div class="input-group">
-          <input type="text" class="form-control" ng-model="messageText" placeholder="Type your message" />
-          <span class="input-group-btn">
-            <button ng-click="sendMsg()" class="btn btn-primary">Send</button>
-          </span>
+        <div class="list">
+          <div class="item item-input-inset">
+            <label class="item-input-wrapper">
+              <input type="text" ng-model="ctrl.messageText" placeholder="Type your message">
+            </label>
+            <button class="button button-small" ng-click="sendMsg()">
+              Send
+            </button>
+          </div>
         </div>
       </form>
     </div>

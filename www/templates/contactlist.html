@@ -1,0 +1,16 @@
+<ion-view view-title="ContactList">
+  <ion-content>
+
+    <div class="list">
+
+    <a class="item item-avatar" ng-repeat="contact in contacts" ng-click="openChat(contact)" href="#/app/chat">
+      <img ng-src="{{contact.contact.picture}}">
+      <h2>{{contact.contact.alias}}</h2>
+      <p>{{contact.status}}</p>
+    </a>
+
+
+    </div>
+
+  </ion-content>
+</ion-view>
