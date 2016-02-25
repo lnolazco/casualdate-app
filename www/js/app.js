@@ -24,88 +24,78 @@ angular.module('casualApp', ['ionic', 'ngResource', 'uiGmapgoogle-maps'])
 
 .config(function($stateProvider, $urlRouterProvider) {
 
-  $stateProvider
-
+    $stateProvider
     .state('app', {
-    url: '/app',
-    abstract: true,
-    templateUrl: 'templates/menu.html',
-    controller: 'AppCtrl'
-  })
-
-  .state('app.search', {
-    url: '/search',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/search.html'
-      }
-    }
-  })
-
-  .state('app.browse', {
-      url: '/browse',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/browse.html'
-        }
-      }
+        url: '/app',
+        abstract: true,
+        templateUrl: 'templates/menu.html',
+        controller: 'AppCtrl'
     })
-    .state('app.playlists', {
-      url: '/playlists',
-      views: {
-        'menuContent': {
-          templateUrl: 'templates/playlists.html',
-          controller: 'PlaylistsCtrl'
+    .state('app.home', {
+        url: '/home',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/home.html',
+                controller: 'HomeCtrl'
+            }
         }
-      }
     })
+    .state('app.map', {
+        url: '/map',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/map.html',
+                controller: 'MapCtrl'
+            }
+        }
+    })
+    .state('app.contactlist', {
+        url: '/contactlist',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/contactlist.html',
+                controller: 'ContactlistCtrl'
+            }
+        }
+    })
+    .state('app.chat', {
+        url: '/chat/:id',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/chat.html',
+                controller: 'ChatCtrl'
+            }
+        }
+    })
+    .state('app.crush', {
+        url: '/crush',
+        views: {
+            'menuContent': {
+                templateUrl: 'templates/crush.html',
+                controller: 'CrushCtrl'
+            }
+        }
+    });
 
-  .state('app.single', {
-    url: '/playlists/:playlistId',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/playlist.html',
-        controller: 'PlaylistCtrl'
-      }
-    }
-  })
-  .state('app.map', {
-    url: '/map',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/map.html',
-        controller: 'MapCtrl'
-      }
-    }
-  })
-  .state('app.contactlist', {
-    url: '/contactlist',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/contactlist.html',
-        controller: 'ContactlistCtrl'
-      }
-    }
-  })
-  .state('app.chat', {
-    url: '/chat',
-    views: {
-      'menuContent': {
-        templateUrl: 'templates/chat.html',
-        controller: 'ChatCtrl'
-      }
-    }
-  });
-
-  // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/app/playlists');
+    // if none of the above states are matched, use this as the fallback
+    $urlRouterProvider.otherwise('/app/home');
 })
 .value('userData', {
   timestampPosition: null,
   position: {},
-  id: null
+  model: {}
 })
-.value('chatData', {
-  contactModel: {},
-  myModel: {}
+.constant('defaultValues', {
+    map: {
+        center: { latitude: 41.4, longitude: 2.2},
+        zoom: 14,
+        control: {},
+        bounds: {},
+        options:  {
+            disableDefaultUI: !0,
+            mapTypeControl: !1,
+            tilt: 45
+        }
+    },
+    urlSocketIo : 'http://localhost:3000'
 });

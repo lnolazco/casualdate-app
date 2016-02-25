@@ -15,6 +15,13 @@ angular.module('casualApp')
       }
     });
   };
+  this.getContactByAlias = function (alias) {
+    return contactFactory.get({option:'findOne'},{
+      filter: {
+        where: {alias: alias}
+      }
+    });
+  };
   this.save = function (contact) {
     if (contact.id !== undefined)
       return contactFactory.update(contact);

@@ -3,7 +3,7 @@
 
     <div class="list">
 
-    <a class="item item-avatar" ng-repeat="contact in contacts" ng-click="openChat(contact)" href="#/app/chat">
+    <a class="item item-avatar" ng-repeat="contact in contacts" ng-href="#/app/chat/{{contact.contact.id}}">
       <img ng-src="{{contact.contact.picture}}">
       <h2>{{contact.contact.alias}}</h2>
       <p>{{contact.status}}</p>

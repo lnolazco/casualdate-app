@@ -12,21 +12,16 @@
                     icon="'icon'"
                     click="openContact">
     </ui-gmap-marker>
-      <ui-gmap-window show="contact.show" coords="contact.position" closeClick="closeClick()" control="contact.control">
+      <ui-gmap-window show="showWindow" coords="contactPosition" closeClick="closeClick()">
         <div class="popup" style="width: 150px; height: 160px;">
           <form class="form-horizontal">
             <div class="form-group">
               <label class="col-md-6 control-label">Alias</label>
               <div class="col-md-6">
-                <p class="form-control-static">{{contact.model.alias}}</p>
+                <p class="form-control-static">{{contact.alias}}</p>
               </div>
             </div>
-            <a href="#/app/chat" >Chat</a>
-            <!--
-            <div ng-controller='chatCtrl'>
-              <button ng-click="openChat()" class="btn btn-info">Contact</button>
-            </div>
-          -->
+            <a ng-href="#/app/chat/{{contact.id}}" class="button button-balanced" >Chat</a>
           </form>
         </div>
       </ui-gmap-window>
